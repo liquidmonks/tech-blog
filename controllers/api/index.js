@@ -1,14 +1,13 @@
-// Import the functions you need from the SDKs you need
-
+// Export routes for server.js to use.
 const router = require("express").Router();
 
-// Import the models you need from the SDKs you need
-const apiRoutes = require("./api");
-const homeRoutes = require("./home-routes.js");
+// Import the model controller api files to use its database functions.
+const userRoutes = require("./user-routes");
+const postRoutes = require("./post-routes");
 
-// Create your routes here
-router.use("/", homeRoutes);
-router.use("/api", apiRoutes);
+// Create all our routes and set up logic within those routes where required.
+router.use("/users", userRoutes);
+router.use("/post", postRoutes);
 
 // Export routes for server.js to use.
 module.exports = router;
