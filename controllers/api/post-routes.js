@@ -2,11 +2,13 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
 
+// The `/api/users` endpoint
 router.post("/create", async (req, res) => {
   console.log("hang-on");
 
   try {
     const dbPostData = await Post.create({
+      // create a new post
       title: req.body.title,
       content: req.body.content,
       user_id: req.session.user_id,
@@ -19,4 +21,5 @@ router.post("/create", async (req, res) => {
   }
 });
 
+// The `/api/users` endpoint
 module.exports = router;
