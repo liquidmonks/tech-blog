@@ -1,13 +1,24 @@
 {
-  "name": "tech-blog",
+  "name": "14-tech-blog",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "seeds": "node seeds/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liquidmonks/tech-blog.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liquidmonks/tech-blog/issues"
+  },
+  "homepage": "https://github.com/liquidmonks/tech-blog/blob/main/README.md",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",
@@ -18,8 +29,5 @@
     "mysql2": "^2.3.3",
     "seed": "^0.4.4",
     "sequelize": "^6.19.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.13.0"
   }
 }
