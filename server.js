@@ -8,12 +8,14 @@ const helpers = require("./utils/helpers");
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const app = express(); // assign express function to 'app'
-const PORT = process.env.PORT || 3003; // set up port to be heroku or 3001.
+// Sets up the Express App
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
+// Inform Express.js on which template engine to use
 const sess = {
   secret: "Super secret secret",
   cookie: {},
@@ -24,18 +26,23 @@ const sess = {
   }),
 };
 
+// Passport middleware
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+// Inform Express.js on which template directory to use
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// Import routes and give the server access to them.
 app.use(routes);
 
+// Sync sequelize models to the database, then turn on the server
 sequelize.sync();
 
-app.listen(PORT, () => console.log(`Now listening on port http://localhost:${PORT}`));
+// turn on connection to db and server
+app.listen(PORT, () => console.log(`Server listening on port http://localhost:${PORT}`));
