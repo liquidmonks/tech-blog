@@ -1,6 +1,6 @@
 // Create all our routes and set up logic within those routes where required.
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const { User, Post, Comment } = require("../../models/Post");
 
 // The `/api/users` endpoint
 router.post("/create", async (req, res) => {
