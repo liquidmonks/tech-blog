@@ -15,8 +15,10 @@ router.get("/", async (req, res) => {
       order: [["createdAt", "DESC"]],
     });
 
+    // Serialize data so the template can read it
     const posts = dbPostData.map((element) => element.get({ plain: true }));
 
+    // Pass serialized data and session flag into template
     posts.forEach((element) => {
       element.createdAt = moment(new Date(element.createdAt).toISOString()).format("M/D/YYYY");
     });
@@ -31,6 +33,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET single post
 router.get("/post/:id", async (req, res) => {
   try {
     const dbPostData = await Post.findOne({
@@ -49,14 +52,18 @@ router.get("/post/:id", async (req, res) => {
       res.status(400).json({ messgae: "post does not exsist" });
     }
 
+    // Serialize data so the template can read it
     const post = dbPostData.get({ plain: true });
 
+    // Pass serialized data and session flag into template
     post.createdAt = moment(new Date(post.createdAt).toISOString()).format("M/D/YYYY");
 
+    // Pass serialized data and session flag into template
     post.comments.forEach((element) => {
       element.createdAt = moment(new Date(element.createdAt).toISOString()).format("M/D/YYYY");
     });
 
+    // Pass serialized data and session flag into template
     res.render("post", { post: post, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
@@ -64,6 +71,7 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
+// GET login page
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -82,6 +90,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+//
 router.get("/dashboard", withAuth, async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect("/");
@@ -97,12 +106,15 @@ router.get("/dashboard", withAuth, async (req, res) => {
       order: [["createdAt", "DESC"]],
     });
 
+    // Serialize data so the template can read it
     const posts = dbPostData.map((element) => element.get({ plain: true }));
 
+    // Pass serialized data and session flag into template
     posts.forEach((element) => {
       element.createdAt = moment(new Date(posts[0].createdAt).toISOString()).format("M/D/YYYY");
     });
 
+    // Pass serialized data and session flag into template
     res.render("dashboard", { posts: posts, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
