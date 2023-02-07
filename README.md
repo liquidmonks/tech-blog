@@ -45,8 +45,9 @@ Execute the program:
 - Run "npm start"
 
 ## Application Demo Snippet
+![techblogger](https://user-images.githubusercontent.com/114820394/217341196-d69826b5-3760-4e40-bbab-03df8163dcfc.gif)
 
-![techBlog](https://user-images.githubusercontent.com/114820394/217337907-8396661c-1d56-4553-80e1-903fb51a1ac4.gif)
+
 
 
 
