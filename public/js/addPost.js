@@ -23,4 +23,4 @@ const addPost = async (e) => {
   }
 };
 
-$("#add-post").click(addPost);
+$("#add-post").click(addPost); // add the click event to the add post button
