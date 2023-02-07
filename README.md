@@ -45,11 +45,7 @@ Execute the program:
 - Run "npm start"
 
 ## Application Demo Snippet
-![techblogger](https://user-images.githubusercontent.com/114820394/217341196-d69826b5-3760-4e40-bbab-03df8163dcfc.gif)
-
-
-
-
+![blogger](https://user-images.githubusercontent.com/114820394/217341898-0a4584f5-f602-4f7a-9547-c36c68f11348.gif)
 
 ## 🔗 Deployed Site Link
 [![Click for Website](https://img.shields.io/badge/website-Click-yellow)](https://techblogger.herokuapp.com/)
