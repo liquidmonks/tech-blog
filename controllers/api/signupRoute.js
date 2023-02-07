@@ -3,6 +3,7 @@ const { response } = require("express");
 const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
+  //post route to create a new user
   // Validate request if logged in
   const findUser = await User.findOne({ where: { user_name: req.body.user_name } });
 
@@ -13,6 +14,7 @@ router.post("/", async (req, res) => {
   }
 
   try {
+    // Create new user
     const user = await User.create({
       user_name: req.body.user_name,
       password: req.body.password,
