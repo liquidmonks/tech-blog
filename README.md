@@ -45,12 +45,10 @@ Execute the program:
 - Run "npm start"
 
 ## Application Demo Snippet
-![ecom](https://user-images.githubusercontent.com/114820394/215233350-fa892b30-bf20-4c1d-a810-4746ef64eb5b.gif)
-
-
+![blogger](https://user-images.githubusercontent.com/114820394/217341898-0a4584f5-f602-4f7a-9547-c36c68f11348.gif)
 
 ## 🔗 Deployed Site Link
-[![Click for Website](https://img.shields.io/badge/website-Click-yellow)](https://screencast-o-matic.com/watch/c0VtqPVxIab)
+[![Click for Website](https://img.shields.io/badge/website-Click-yellow)](https://techblogger.herokuapp.com/)
 
 ## Tech Stack
 
