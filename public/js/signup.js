@@ -34,7 +34,7 @@ const signUpHandler = async (e) => {
       // if server responds with success
       document.location.replace("/"); // redirect to homepage
     } else {
-      return alert("Username already exist in our database. Try another Username."); // display error message
+      return alert("This username already exist in our database, please try another username."); // display error message
     }
   }
 };
