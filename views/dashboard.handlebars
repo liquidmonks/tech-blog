@@ -1,0 +1,111 @@
+      
+<nav class="bg-[#E4E0EE] border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" class="flex items-center">
+            <span class="self-center text-xl font-semibold whitespace-nowrap">Tech Blog</span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </button>
+            <div class="hidden w-full md:block md:w-auto mx-auto" id="navbar-default">
+                <div class="flex md:flex-row flex-col">
+                    <a class="px-4 py-3" href="/">
+                        Home
+                    </a>
+                    {{#if logged_in}}
+                    <a class="px-4 py-3" href="./dashboard">
+                        Dashboard
+                    </a>
+                
+                    <a class="px-4 py-3" id="logout">
+                        Logout
+                    </a>
+                    {{else}}
+                    <a class="px-4 py-3" href="/login">
+                        Login
+                    </a>
+                    {{/if}}
+            </div>
+        </div>
+    </div>
+</nav>
+ 
+ 
+<section class="px-5 py-10 bg-[#4E2A84]">
+    <h1 class="text-white text-center font-bold text-2xl">Dashboard</h1>
+</section>
+    {{!-- <div class="has-text-centered is-half">
+        <button class="button is-primary mt-5 is-half js-modal-trigger" data-target="add-post-modal">Add New Post</button>
+    </div> --}}
+
+     <div class="px-10">
+        <!-- START ARTICLE FEED -->
+        <section class="articles py-10">
+            <div class="lg:w-8/12 md:w-10/12 w-full mx-auto">
+              
+              <button class="px-5 py-2 text-white font-semibold bg-[#4E2A84] rounded mb-4 w-full" id="post-modal" >Add New Post</button>
+              
+                <div class="flex flex-wrap">
+                    <!-- START ARTICLE -->
+                    {{#each userPosts as |post| }}
+                    <div class="md:w-1/2 w-full px-3">
+                        <div class="shadow-lg rounded p-5 mb-4 h-full">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                <h3 class="text-[#4E2A84] text-lg"><a href="./dashboard/{{post.id}}">{{post.title}}</a></h3> 
+                                    <h4 class="text-sm font-semibold mb-3">Posted on {{formDate post.createdAt}}</h4>
+                                    <p class="mb-3">{{post.contents}}</p>
+                                    <a class="px-3 py-2 text-white text-sm font-semibold bg-[#716C6B] rounded mb-4 w-full" href="./dashboard/{{post.id}}">Edit Post</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                <!-- END ARTICLE -->
+              </div>
+
+        </section>
+        <!-- END ARTICLE FEED -->
+    </div>
+<!-- Main modal -->
+<div id="postModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-[#000000b8]">
+    <div class="relative w-full h-full max-w-2xl md:h-auto mx-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow light:bg-gray-700">
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <div class="flex justify-between">
+                    <h3 class="font-bold text-xl border-bottom pb-3">Add Post</h3>
+                    <span class="font-bold text-xl" id="close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+                <input class="w-full border p-x rounded p-2 mb-3" placeholder="Title" id="modal-title-input">
+                <textarea class="w-full border p-x rounded p-2 mb-3" placeholder="Content" rows="5" id="modal-content-textarea"></textarea>
+                <div class="text-center">
+                    <button class="px-5 py-2 text-white font-semibold bg-[#716C6B] rounded mt-3" id="add-post">Add Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="/js/login.js"></script>
+        <script src="/js/logout.js"></script>
+        <script src="/js/modal.js"></script>
+        <script src="/js/addPost.js"></script>
+        
+<script>
+    $('#post-modal').click(function(){
+        $('#postModal').show();
+    })
+    $('#close').click(function(){
+        $('#postModal').hide();
+    })
+</script>

@@ -1,0 +1,12 @@
+[
+    {
+        "contents": "Fake content by logged in user A",
+        "user_id": 2,
+        "post_id": 2
+    },
+    {
+        "contents": "Fake content by logged in user B",
+        "user_id": 3,
+        "post_id": 3
+    }
+]

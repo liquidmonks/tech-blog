@@ -1,0 +1,60 @@
+      
+<nav class="bg-[#E4E0EE] border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" class="flex items-center">
+            <span class="self-center text-xl font-semibold whitespace-nowrap">Tech Blog</span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </button>
+            <div class="hidden w-full md:block md:w-auto mx-auto" id="navbar-default">
+                <div class="flex md:flex-row flex-col">
+                    <a class="px-4 py-3" href="/">
+                        Home
+                    </a>
+                    {{#if logged_in}}
+                    <a class="px-4 py-3" href="/dashboard">
+                        Dashboard
+                    </a>
+                
+                    <a class="px-4 py-3" id="logout">
+                        Logout
+                    </a>
+                    {{else}}
+                    <a class="px-4 py-3" href="/login">
+                        Login
+                    </a>
+                    {{/if}}
+            </div>
+        </div>
+    </div>
+</nav>
+ 
+ 
+<section class="px-5 py-10 bg-[#4E2A84]">
+    <h1 class="text-white text-center font-bold text-2xl">Edit Post</h1>
+</section>
+
+    <div class="px-10">
+        <!-- START ARTICLE FEED -->
+        <section class="articles py-10">
+            <div class="lg:w-8/12 md:w-10/12 w-full mx-auto">
+              <div class="shadow-lg rounded p-5 mb-4">
+                <h4 class="font-semibold">Updated on {{formDate editPost.createdAt}}</h4>
+                <h5 class="font-semibold">Title:</h5>
+                <input class="w-full border p-x rounded p-2 mb-3" placeholder="Title" id="title-input" value={{editPost.title}}>
+                <h5 class="font-semibold">Content:</h5>
+                <textarea class="w-full border p-x rounded p-2 mb-3" placeholder="Content" rows="5" id="content-textarea">{{editPost.contents}}</textarea>
+                <div class="text-center">
+                    <button class="px-5 py-2 text-white font-semibold bg-[#716C6B] rounded mt-3" id="update-post">Update Post</button>
+                    <button class="px-5 py-2 text-white font-semibold bg-[#cb0000] rounded mt-3" id="delete-post">Delete Post</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/editPost.js"></script>
+<script src="/js/deletePost.js"></script>

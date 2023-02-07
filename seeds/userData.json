@@ -1,0 +1,15 @@
+[
+    {
+      "user_name" : "fakeuser1",
+      "password": "fakepassword1"
+    },
+    {
+    "user_name" : "fakeuser2",
+      "password": "fakepassword2"
+    },
+    {
+      "user_name" : "fakeuser3",
+      "password": "fakepassword3"
+    }
+  ]
+  

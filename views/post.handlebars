@@ -1,0 +1,123 @@
+   <!-- START NAV -->
+      
+<nav class="bg-[#E4E0EE] border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="/" class="flex items-center">
+            <span class="self-center text-xl font-semibold whitespace-nowrap">Tech Blog</span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 light:text-gray-400 light:hover:bg-gray-700 light:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </button>
+            <div class="hidden w-full md:block md:w-auto mx-auto" id="navbar-default">
+                <div class="flex md:flex-row flex-col">
+                    <a class="px-4 py-3" href="/">
+                        Home
+                    </a>
+                    {{#if logged_in}}
+                    <a class="px-4 py-3" href="/dashboard">
+                        Dashboard
+                    </a>
+                
+                    <a class="px-4 py-3" id="logout">
+                        Logout
+                    </a>
+                    {{else}}
+                    <a class="px-4 py-3" href="/login">
+                        Login
+                    </a>
+                    {{/if}}
+            </div>
+        </div>
+    </div>
+</nav>
+ 
+ 
+<section class="px-5 py-10 bg-[#4E2A84]">
+    <h1 class="text-white text-center font-bold text-2xl">Post Details</h1>
+</section>
+<div class="px-10">
+    <!-- START ARTICLE FEED -->
+    <section class="articles py-10">
+        <div class="md:w-10/12 w-full mx-auto">
+            <div class="flex flex-wrap">
+                <div class="md:w-8/12 w-full px-3">
+                <h3 class="text-center py-5 font-bold text-xl">Post</h3>
+                    <div class="shadow-lg rounded p-5 mb-4">
+                        <div class="flex justify-between flex-col">
+                            <h4 class="text-sm text-right">Posted by {{user.user_name}} on {{formDate singlePost.createdAt}}</h4>
+                            <div>
+                                <h3 class="text-[#4E2A84] font-bold text-lg">{{singlePost.title}}</h3>
+                            </div>
+                            <div>
+                                <p>{{singlePost.contents}}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            
+                        {{#if logged_in}}
+                        <div class="flex">
+                            <input class="w-full border p-x rounded rounded-tr-none rounded-br-none p-2" placeholder="Add a comment" id="comment">
+                            <button style="white-space: nowrap;" class="px-3 py-1 leading-3 text-white font-semibold text-sm bg-[#716C6B] rounded rounded-tl-none rounded-bl-none" id="add-comment">Add Comment</button>
+                        </div>
+                        {{else}}
+                        <a href="/login" class="px-3 py-2 leading-5 text-white font-semibold text-sm bg-[#716C6B] rounded" id="comment-login">Login first to comment</a>
+                        {{/if}}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-4/12 w-full px-3">
+                    <div class="">
+                        <h3 class="text-center py-5 font-bold text-xl">Comments</h3>
+                        <div class="shadow-lg rounded p-5">
+                            {{#each singlePost.comments as |comments| }}
+                            <div class="py-3 border-b">
+                                <div class="flex justify-between flex-col">
+                                    <h4 class="text-sm">Posted by <span class="font-bold">{{user.user_name}}</span> on {{formDate comments.createdAt}}</h4>
+                                    <div>
+                                        <p>{{comments.contents}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Main modal -->
+<div id="commentModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-[#000000b8]">
+    <div class="relative w-full h-full max-w-2xl md:h-auto mx-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow light:bg-gray-700">
+            <!-- Modal body -->
+            <div class="p-6 space-y-6">
+                <div class="flex justify-between">
+                    <h3 class="font-bold text-xl border-bottom pb-3">Add Comment</h3>
+                    <span class="font-bold text-xl" id="close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/addComment.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/deletePost.js"></script>
+
+<script>
+    $('#comment-modal').click(function(){
+        $('#commentModal').show();
+    })
+    $('#close').click(function(){
+        $('#commentModal').hide();
+    })
+</script>

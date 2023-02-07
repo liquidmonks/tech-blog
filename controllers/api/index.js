@@ -1,13 +1,17 @@
-// Export routes for server.js to use.
+// Global controller route variables
 const router = require("express").Router();
+const loginRoute = require("./loginRoute");
+const logoutRoute = require("./logoutRoute");
+const postRoute = require("./postRoute");
+const signupRoute = require("./signupRoute");
+const commentRoute = require("./commentRoute");
 
-// Import the model controller api files to use its database functions.
-const userRoutes = require("./user-routes");
-const postRoutes = require("./post-routes");
+// Controller api routes
+router.use("/login", loginRoute);
+router.use("/logout", logoutRoute);
+router.use("/post", postRoute);
+router.use("/signup", signupRoute);
+router.use("/comment", commentRoute);
 
-// Create all our routes and set up logic within those routes where required.
-//router.use("/users", userRoutes);
-router.use("/post", postRoutes);
-
-// Export routes for server.js to use.
+// Export the router
 module.exports = router;
