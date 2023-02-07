@@ -42,6 +42,7 @@ Comment.init(
   },
 
   {
+    // pass in our imported sequelize connection (the direct connection to our database)
     sequelize,
     timestamps: true,
     freezeTableName: true,
