@@ -1,6 +1,6 @@
 # CMS-Style Tech Blog
 
-This is a full-stack application utilizes Model-View Controller (MVC) programming to allow a user to publish articles, blog posts, and my thoughts and opinions.
+This full-stack application utilizes Model-View Controller (MVC) programming to allow a user to publish articles, blog posts, and my thoughts and opinions.
 
 
 ## Features
